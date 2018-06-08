@@ -153,11 +153,11 @@ for ite in [0,1]:
             m.addConstr((quicksum(x[i] for i in nodes) == numNodes), "CantSensores")
 
         # Coverage constraints
-        # for t in tiempos:
-        #     m.addConstr(quicksum(aa[i, t] for i in grupoN1) >= coverage, "coverageG1")
-        #     m.addConstr(quicksum(aa[i, t] for i in grupoN2) >= coverage, "coverageG2")
-        #     m.addConstr(quicksum(aa[i, t] for i in grupoN3) >= coverage, "coverageG3")
-        #     m.addConstr(quicksum(aa[i, t] for i in grupoN4) >= coverage, "coverageG4")
+        for t in times:
+            m.addConstr(quicksum(aa[i, t] for i in grupoN1) >= coverage, "coverageG1")
+            m.addConstr(quicksum(aa[i, t] for i in grupoN2) >= coverage, "coverageG2")
+            m.addConstr(quicksum(aa[i, t] for i in grupoN3) >= coverage, "coverageG3")
+            m.addConstr(quicksum(aa[i, t] for i in grupoN4) >= coverage, "coverageG4")
 
         #---OPTIMIZE MODEL---
         m.optimize()
